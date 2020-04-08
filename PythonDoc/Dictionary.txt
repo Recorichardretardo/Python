@@ -1,0 +1,85 @@
+* Dictionaries:
+===============
+* A dictionary is a collection which is unordered, changeable and indexed. In Python dictionaries are written with curly brackets, and they have keys and values.
+
+Eg:
+
+Create and print a dictionary:
+
+friend_ages = {"Rolf": 24, "Adam": 30, "Anne": 27}
+
+print(friend_ages)  # {'Rolf': 24, 'Adam': 30, 'Anne': 27, 'Bob': 20}
+
+* Accessing Items from dictionary:
+==================================
+
+print(friend_ages["Adam"])
+
+* There is also a method called get() that will give you the same result:
+
+age = friend_ages.get("Adam")
+
+* Adding Items to dictionary:
+=============================
+
+friend_ages = {"Rolf": 24, "Adam": 30, "Anne": 27}
+
+friend_ages["Bob"] = 20
+
+
+* List of dictionaries:
+=======================
+
+friends = [
+    {"name": "Rolf Smith", "age": 24},
+    {"name": "Adam Wool", "age": 30},
+    {"name": "Anne Pun", "age": 27},
+]
+
+print(friends)
+
+* dictionary Iteration:
+========================
+
+student_attendance = {"Rolf": 96, "Bob": 80, "Anne": 100}
+
+for student in student_attendance:
+    print(f"{student}: {student_attendance[student]}")
+
+
+# Better Looping
+
+for student, attendance in student_attendance.items():
+    print(f"{student}: {attendance}")
+
+* Using the `in` keyword :
+==========================
+
+if "Bob" in student_attendance:
+    print(f"Bob: {student_attendance[student]}")
+else:
+    print("Bob isn't a student in this class!")
+
+
+Methods supported by sets are:
+-------------------------------
+
+* get () – Get the value of the key name
+* values () – return values of a dictionary
+* items () – return the list with all dictionary keys with values.
+* len () – gives the total length of the dictionary
+* pop () – removes the item with the specified key name
+* popitem () – removes the last inserted item (in versions before 3.7, a random item is removed instead)
+* del  – keyword removes the item with the specified key name (The del keyword can also delete the dictionary completely)
+* clear () – empties the dictionary
+* copy () – Make a copy of a dictionary ( Another way to make a copy is to use the built-in method dict() )
+* dict () – Make a copy of a dictionary
+* clear () – empties the dictionary
+* fromkeys () – Returns a dictionary with the specified keys and value
+* setdefault () – Returns the value of the specified key. If the key does not exist: insert the key, with the specified value
+* update () – Updates the dictionary with the specified key-value pairs
+
+
+
+
+

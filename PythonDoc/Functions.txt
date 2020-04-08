@@ -1,0 +1,202 @@
+* Python Functions:
+====================
+* A function is a block of code which only runs when it is called.
+* A function can return data as a result.
+
+* Creating a Function:
+=======================
+
+* In Python a function is defined using the def keyword:
+
+Eg:
+
+def hello():
+    print("Hello!")
+
+* Calling a Function:
+======================
+
+* To call a function, use the function name followed by parenthesis:
+
+def hello():
+    print("Hello!")
+
+
+hello()
+
+* Don't reuse names:
+====================
+
+Eg:
+
+def print():
+    print("Hello, world!")  # Error!
+
+
+* Don't reuse names, it's generally confusing!:
+===============================================
+
+Eg:
+
+friends = ["Rolf", "Bob"]
+
+
+def add_friend():
+    friend_name = input("Enter your friend name: ")
+    friends = friends + [friend_name]  # Another way of adding to a list!
+
+
+add_friend()
+print(friends)  # Always ['Rolf', 'Bob']
+
+* Can't call a function before defining it:
+===========================================
+
+Eg:
+
+say_hello()
+
+
+def say_hello():
+    print("Hello!")
+
+* Remember function body only runs when the function is called:
+===============================================================
+
+Eg:
+
+def add_friend():
+    friends.append("Rolf")
+
+
+friends = []
+add_friend()
+
+print(friends)  # [Rolf]
+
+
+
+* Arguments:
+============
+
+* Information can be passed into functions as arguments.
+* Arguments are specified after the function name, inside the parentheses.
+
+Eg:
+
+  
+def add(x, y):
+    result = x + y
+    print(result)
+
+
+add(2, 3)  # 5
+
+* If a function doesn't have parameter, you can't give it arguments:
+=====================================================================
+
+Eg:
+
+def say_hello():
+    print("Hello!")
+
+
+say_hello("Bob")  # Error
+
+* Keyword arguments:
+====================
+
+Eg:
+
+def say_hello(name):
+    print(f"Hello, {name}!")
+
+
+say_hello(name="Bob") 
+
+
+Eg:
+
+def say_hello(name,surname):
+    print(f"Hello, {name}  {surname}")
+
+
+say_hello(surname="Bob",name="Smith") 
+
+
+Eg:
+
+def add(x, y):
+    print(x + y)
+
+
+add(5, 8)
+result = add(5, 8)
+print(result)  # None
+
+* default parameter values:
+===========================
+
+Eg:
+
+def add(x, y=3):
+    print(x + y)
+
+
+add(5)  # 8
+add(5, 8)  # 13
+add(y=3)  # Error, missing x
+
+* Usually don't use variables as default value:
+================================================
+
+default_y = 3
+
+
+def add(x, y=default_y):
+    sum = x + y
+    print(sum)
+
+
+add(2)  # 5
+
+default_y = 4
+print(default_y)  # 4
+
+add(2)  # 5, even though we re-defined default_y
+
+
+* Return Values:
+================
+
+* To let a function return a value, use the return statement:
+
+Eg:
+
+def add(x, y):
+    return x + y
+
+
+add(1, 2)  # Nothing printed out anymore.
+result = add(2, 3)
+print(result)  # 5
+
+* Recursion:
+============
+
+* Python also accepts function recursion, which means a defined function can call itself.
+
+Eg:
+
+def tri_recursion(k):
+  if(k > 0):
+    result = k + tri_recursion(k - 1)
+    print(result)
+  else:
+    result = 0
+  return result
+
+print("\n\nRecursion Example Results")
+tri_recursion(6)
+
+

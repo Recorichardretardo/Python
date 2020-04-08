@@ -1,0 +1,87 @@
+* Destructuring:
+================
+* Destructuring (also called unpacking) is where we take a collection,
+ like a list or a tuple, and we break it up into individual values. 
+* This is quite useful, as it enables us to do things like destructuring assignments, where we assign values to several variables at once from a single collection.
+
+* Standard Destructuring Assignments:
+======================================
+
+>>> x, y = 5, 11 or x, y = (5, 11)
+
+* The value 5 to x, and 11 to y. The values are assigned entirely based on order
+
+* Also destructure a list, for example, or even a set. To perform a destructuring assignment with a set, however, since the order is not guaranteed.
+* If  tring to destructure a collection with more or fewer values thanwe provided variables,  end up with a ValueError.
+
+Eg: ValueError: not enough values to unpack (expected 4, got 3)
+
+* Destructuring in for loops:
+=============================
+
+Eg:
+
+example_list = ["A", "B", "C"]
+
+for counter, letter in enumerate(example_list):
+	print(counter, letter)
+
+# 0 A
+# 1 B
+# 2 C
+
+* enumerate takes an iterable collection as an argument and returns an enumerate object containing a tuple for each item in the collection. 
+* Each tuple contains a counter value, which increments with each iteration, along with a value from the provided collection.
+
+* It's possible to do this type of destructuring with as many values as  like, and this is not limited to the enumerate function. 
+
+* For example:
+
+people = [
+	("Bob", 42, "Mechanic"),
+	("James", 24, "Artist"),
+	("Harry", 32, "Lecturer")
+]
+
+for name, age, profession in people:
+	print(f"Name: {name}, Age: {age}, Profession: {profession}")
+
+* Here each tuple in the people list, assigning the values to name, age, and profession respectively.  
+
+* rely on indices instead of good descriptive names:
+
+for person in people:
+	print(f"Name: {person[0]}, Age: {person[1]}, Profession: {person[2]}")
+
+* Ignoring Values:
+==================
+
+* use an _ in place of a variable name.
+
+Eg:
+
+person = ("Bob", 42, "Mechanic")
+name, _, profession = person
+
+print(name, profession)  # Bob Mechanic
+
+* Using * to Collect Values:
+============================
+
+> The * operator to collect leftover values when performing a destructuring assignment.
+
+Eg:
+
+head, *tail = [1, 2, 3, 4, 5]
+
+print(head)  # 1
+print(tail)  # [2, 3, 4, 5]
+
+
+head, *middle, tail = [1, 2, 3, 4, 5]
+
+print(head)    # 1
+print(middle)  # [2, 3, 4]
+print(tail)    # 5
+
+first, second, third, *rest = [1, 2, 3, 4, 5]

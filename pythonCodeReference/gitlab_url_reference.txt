@@ -15,3 +15,18 @@ https://code.visualstudio.com/docs/editor/versioncontrol#_remotes
 
 
 https://github.com/Recorichardretardo/Python.git
+
+
+https://blog.tecladocode.com/how-to-set-up-visual-studio-code-for-python-development/
+
+https://stackoverflow.com/questions/21808657/what-is-a-unicode-string
+
+https://blog.tecladocode.com/destructuring-in-python/
+
+https://blog.tecladocode.com/python-formatting-numbers-for-printing/
+
+
+https://blog.tecladocode.com/destructuring-in-python/
+
+
+

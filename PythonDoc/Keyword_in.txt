@@ -1,0 +1,37 @@
+* The "in" keyword:
+=================
+
+* The "in" keyword has two purposes:
+
+1 * The "in" keyword is used to check if a value is present in a sequence (list, range, string etc.).
+
+2 * The "in" keyword is also used to iterate through a sequence in a for loop:
+
+Eg:
+
+friends = ["Rolf","Bob","Jen"]
+print("Jen" in friends)
+
+ouput: True
+
+* If Statements with the "in" keyword:
+======================================
+
+Eg:
+
+fruits = ["apple", "banana", "cherry"]
+
+if "banana" in fruits:
+  print("yes")
+
+* for loop with "in" keyword:
+============================
+
+* Loop through a list and print the items:
+
+fruits = ["apple", "banana", "cherry"]
+
+for x in fruits:
+  print(x)
+
+  
