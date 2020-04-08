@@ -1,0 +1,115 @@
+* Python String Formatting:
+============================
+
+
+String format()
+
+The format() method allows you to format selected parts of a string.
+
+Sometimes there are parts of a text that you do not control, maybe they come from a database, or user input?
+
+To control such values, add placeholders (curly brackets {}) in the text, and run the values through the format() method:
+
+Eg:
+ 1 * Add a placeholder where you want to display the price:
+
+price = 49
+txt = "The price is {} dollars"
+print(txt.format(price))
+
+2 * Add parameters inside the curly brackets to specify how to convert the value:
+
+Format the price to be displayed as a number with two decimals:
+
+txt = "The price is {:.2f} dollars"
+
+* Multiple Values :
+
+Just add more values to the format() method:
+
+Eg:
+
+quantity = 3
+itemno = 567
+price = 49
+myorder = "I want {} pieces of item number {} for {:.2f} dollars."
+print(myorder.format(quantity, itemno, price))
+
+* Index Numbers
+
+A number inside the curly brackets {0}
+
+Eg:
+
+quantity = 3
+itemno = 567
+price = 49
+myorder = "I want {0} pieces of item number {1} for {2:.2f} dollars."
+print(myorder.format(quantity, itemno, price))
+
+* To refer to the same value more than once, use the index number:
+
+age = 36
+name = "John"
+txt = "His name is {1}. {1} is {0} years old."
+print(txt.format(age, name))
+
+* Named Indexes :
+
+Use named indexes by entering a name inside the curly brackets
+
+myorder = "I have a {carname}, it is a {model}."
+print(myorder.format(carname = "Ford", model = "Mustang"))
+
+
+* f-strings in python :
+========================
+
+* An Improved String Formatting Syntax
+* Also called “formatted string literals,” 
+* f-strings are string literals that have an f at the beginning and curly braces containing expressions that will be replaced with their values.
+
+Eg :
+
+ name = "Eric"
+ age = 74
+ f"Hello, {name}. You are {age}."
+
+ * It would also be valid to use a capital letter F:
+
+ F"Hello, {name}. You are {age}."
+
+ * Arbitrary Expressions:
+
+ Because f-strings are evaluated at runtime, you can put any and all valid Python expressions in them. This allows you to do some nifty things.
+
+ Eg: 
+
+ f"{2 * 37}"
+
+ * functions with f-strings
+
+def to_lowercase(input):
+    return input.lower()
+
+name = "Eric Idle"
+f"{to_lowercase(name)} is funny."
+
+* classes with f-strings:
+
+class Comedian:
+    def __init__(self, first_name, last_name, age):
+        self.first_name = first_name
+        self.last_name = last_name
+        self.age = age
+
+    def __str__(self):
+        return f"{self.first_name} {self.last_name} is {self.age}."
+
+    def __repr__(self):
+        return f"{self.first_name} {self.last_name} is {self.age}. Surprise!"
+
+
+
+
+

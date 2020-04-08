@@ -1,0 +1,29 @@
+* Taking input in Python:
+==========================
+
+* Python provides us with two inbuilt functions to read the input from the keyboard.
+1 . raw_input ( prompt )
+2 . input ( prompt )
+
+raw_input ( ) : This function works in older version (like Python 2.x). This function takes exactly what is typed from the keyboard, convert it to string and then return it to the variable in which we want to store.
+
+Eg:
+
+g = raw_input("Enter your name : ") 
+print g
+
+input ( ) : This function first takes the input from the user and then evaluates the expression, which means Python automatically identifies whether user entered a string or a number or list. If the input provided is not correct then either syntax error or exception is raised by python.
+
+Eg:
+
+val = input("Enter your value: ") 
+print(val)
+
+* Doing maths with user input :
+
+Eg:
+
+size_input = input("How big is your house (in square feet) :")
+square_feet = int(size_input)
+square_meters = square_feet / 10.8
+print(f"{square_feet} square feet is {square_meters:.2f} square meters.") 

@@ -1,0 +1,17 @@
+https://github.com/tecladocode/python-refresher
+
+https://discordapp.com/channels/614395983807250433/614401267179192322
+
+https://realpython.com/python-f-strings/
+
+PS D:\Kasi Prac\Python> & C:/Python3/python3.exe -m pip install -U pylint --user
+
+http://xahlee.info/python/unicode.html
+
+vsCode Git:
+https://www.youtube.com/watch?v=Fk12ELJ9Bww
+
+https://code.visualstudio.com/docs/editor/versioncontrol#_remotes
+
+
+https://github.com/Recorichardretardo/Python.git
