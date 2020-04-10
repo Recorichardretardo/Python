@@ -1,0 +1,164 @@
+* Decorators :
+==============
+
+* In Python, functions are the first class objects, which means that –
+
+* Functions are objects; they can be referenced to, passed to a variable and returned from other functions as well.
+* Functions can be defined inside another function and can also be passed as argument to another function.
+* Decorators are very powerful and useful tool in Python since it allows programmers to modify the behavior of function or class. Decorators allow us to wrap another function in order to extend the behavior of wrapped function, without permanently modifying it.
+
+* In Decorators, functions are taken as the argument into another function and then called inside the wrapper function.
+
+* Decorators are a significant part of Python. In simple words: they are functions which modify the functionality of other functions.
+
+
+* Simple Decorator:
+
+Eg:
+
+def get_admin_password():
+    return "1234"
+
+
+def make_secure(func):
+    def secure_function():
+        if user["access_level"] == "admin":
+            return func()
+        else:
+            return f"No admin permissions for {user['username']}."
+
+    return secure_function
+
+
+get_admin_password = make_secure(get_admin_password)  # `get_admin_password` is now `secure_func` from above
+
+user = {"username": "jose", "access_level": "guest"}
+print(get_admin_password())  # Now we check access level
+
+user = {"username": "bob", "access_level": "admin"}
+print(get_admin_password())
+
+* The "@" syntax for Decorators:
+================================
+
+Eg:
+
+user = {"username": "jose", "access_level": "guest"}
+
+def make_secure(func):
+    def secure_function():
+        if user["access_level"] == "admin":
+            return func()
+        else:
+            return f"No admin permissions for {user['username']}."
+
+    return secure_function
+
+@make_secure
+def get_admin_password():
+    return "1234"
+
+print(get_admin_password())
+
+* keeping function name and docstring:
+======================================
+
+Eg:
+
+import functools
+
+user = {"username": "jose", "access_level": "guest"}
+
+def make_secure(func):
+    @functools.wraps(func)
+    def secure_function():
+        if user["access_level"] == "admin":
+            return func()
+        else:
+            return f"No admin permissions for {user['username']}."
+
+    return secure_function
+
+
+@make_secure
+def get_admin_password():
+    return "1234"
+
+
+print(get_admin_password.__name__)
+
+
+* Decorating functions with parameters:
+========================================
+
+import functools
+
+
+user = {"username": "jose", "access_level": "guest"}
+
+
+def make_secure(func):
+    @functools.wraps(func)
+    def secure_function(panel):
+        if user["access_level"] == "admin":
+            return func(panel)
+        else:
+            return f"No admin permissions for {user['username']}."
+
+    return secure_function
+
+
+@make_secure
+def get_password(panel):
+    if panel == "admin":
+        return "1234"
+    elif panel == "billing":
+        return "super_secure_password"
+
+
+print(get_password.__name__)
+
+* Devorators with parameters:
+==============================
+
+import functools
+
+user = {"username": "jose", "access_level": "user"}
+
+
+def make_secure(access_level):
+    def decorator(func):
+        @functools.wraps(func)
+        def secure_function(*args, **kwargs):
+            if user["access_level"] == access_level:
+                return func(*args, **kwargs)
+            else:
+                return f"No {access_level} permissions for {user['username']}."
+
+        return secure_function
+
+    return decorator
+
+
+@make_secure("admin")  # This runs the make_secure function, which returns decorator. Essentially the same to doing `@decorator`, which is what we had before.
+def get_admin_password():
+    return "admin: 1234"
+
+
+@make_secure("user")
+def get_dashboard_password():
+    return "user: user_password"
+
+
+print(get_admin_password())
+print(get_dashboard_password())
+
+user = {"username": "anna", "access_level": "admin"}
+
+print(get_admin_password())
+print(get_dashboard_password())
+
+
+
+
+

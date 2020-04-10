@@ -1,0 +1,105 @@
+* Python Inheritance:
+======================
+
+* Inheritance allows us to define a class that inherits all the methods and properties from another class.
+* Parent class is the class being inherited from, also called base class.
+* Child class is the class that inherits from another class, also called derived class.
+
+* Create a Parent Class:
+=========================
+
+Eg:
+
+class Person:
+  def __init__(self, fname, lname):
+    self.firstname = fname
+    self.lastname = lname
+
+  def printname(self):
+    print(self.firstname, self.lastname)
+
+#Use the Person class to create an object, and then execute the printname method:
+
+x = Person("John", "Doe")
+x.printname()
+
+
+* Create a Child Class:
+=========================
+
+Eg:
+
+class Student(Person):
+  pass
+
+ * Use the super() Function:
+ ============================
+
+ * Python also has a super() function that will make the child class inherit all the methods and properties from its parent.
+
+
+ Eg:
+
+ class Person:
+  def __init__(self, fname, lname):
+    self.firstname = fname
+    self.lastname = lname
+
+  def printname(self):
+    print(self.firstname, self.lastname)
+
+class Student(Person):
+  def __init__(self, fname, lname, year):
+    super().__init__(fname, lname)
+    self.graduationyear = year
+
+  def welcome(self):
+    print("Welcome", self.firstname, self.lastname, "to the class of", self.graduationyear)
+
+x = Student("Mike", "Olsen", 2019)
+x.welcome()
+
+
+
+Eg:
+
+
+class Device:
+    def __init__(self, name, connected_by):
+        self.name = name
+        self.connected_by = connected_by
+        self.connected = True
+
+    def __str__(self):
+        return f"Device {self.name!r} ({self.connected_by})"
+
+    def disconnect(self):
+        self.connected = False
+
+
+
+class Printer(Device):
+    def __init__(self, name, connected_by, capacity):
+        # super(Printer, self).__init__(name, connected_by)  - Python2.7
+        super().__init__(name, connected_by)  # Python3+
+        self.capacity = capacity
+        self.remaining_pages = capacity
+
+    def __str__(self):
+        return f"{super().__str__()} ({self.remaining_pages} pages remaining)"
+
+    def print(self, pages):
+        if not self.connected:
+            raise TypeError("Device is disconnected at this time, cannot print.")
+        print(f"Printing {pages} pages.")
+        self.remaining_pages -= pages
+
+
+printer = Printer("Printer", "USB", 500)
+printer.print(20)
+print(printer)
+printer.print(50)
+print(printer)
+printer.disconnect()
+printer.print(30)
+

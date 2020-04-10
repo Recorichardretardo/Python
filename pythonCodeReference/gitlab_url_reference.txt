@@ -29,4 +29,9 @@ https://blog.tecladocode.com/python-formatting-numbers-for-printing/
 https://blog.tecladocode.com/destructuring-in-python/
 
 
+https://www.datacamp.com/community/tutorials/python-dictionary-comprehension
+
+
+https://docs.python.org/3/tutorial/errors.html
+
 

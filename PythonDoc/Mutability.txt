@@ -1,0 +1,43 @@
+* Mutable vs Immutable Objects in Python:
+=========================================
+
+*Every variable in python holds an instance of an object. 
+* There are two types of objects in python i.e. Mutable and Immutable objects.
+
+* Whenever an object is instantiated, it is assigned a unique object id.
+* The type of the object is defined at the runtime and it can’t be changed afterwards. However, it’s state can be changed if it is a mutable object.
+
+ * Immutable Objects : These are of in-built types like int, float, bool, string, unicode, tuple. 
+
+ * In simple words, an immutable object can’t be changed after it is created.
+
+ Eg:
+
+ tuple1 = (0, 1, 2, 3)  
+tuple1[0] = 4
+print(tuple1)
+
+Error :
+
+Traceback (most recent call last):
+  File "e0eaddff843a8695575daec34506f126.py", line 3, in 
+    tuple1[0]=4
+TypeError: 'tuple' object does not support item assignment
+
+* Mutable Objects : 
+===================
+
+These are of type list, dict, set . Custom classes are generally mutable.
+
+Eg:
+
+color = ["red", "blue", "green"] 
+print(color) 
+  
+color[0] = "pink"
+color[-1] = "orange"
+print(color) 
+
+output:
+['red', 'blue', 'green']
+['pink', 'blue', 'orange']

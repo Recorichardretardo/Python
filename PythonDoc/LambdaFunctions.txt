@@ -52,5 +52,3 @@ print(list(doubled))
 
 * Lambdas are just functions without a name.
 * They are used to return a value calculated from its parameters.
-* Almost always single-line, so don't do anything complicated in them.
-* Very often better to just define a function and give it a proper name.

@@ -1,0 +1,127 @@
+* @classmethod and @staticmethod:
+=================================
+
+* The @classmethod Decorator:
+==============================
+
+* This decorator exists,to create class methods that are passed the actual class object within the function call, much like self is passed to any other ordinary instance method in a class.
+
+* In those instance methods, the self argument is the class instance object itself, which can then be used to act on instance data.
+*  @classmethod methods also have a mandatory first argument, but this argument isn't a class instance, it's actually the uninstantiated class itself.
+
+Eg:
+
+* class method:
+
+class Student(object):
+
+    def __init__(self, first_name, last_name):
+        self.first_name = first_name
+        self.last_name = last_name
+
+scott = Student('Scott',  'Robinson')
+
+
+* similar @classmethod method:
+
+class DateTime(object):
+
+    def __init__(self, day=10, month=10, year=2000):
+        self.day = day
+        self.month = month
+        self.year = year
+
+    @classmethod
+    def from_string(cls, string_date):
+        day, month, year = map(int, string_date.split('-'))
+        myDate = cls(day, month, year)
+        return myDate
+
+dateObj = DateTime.from_string('20-05-1994')
+print(dateObj)
+
+
+* The @staticmethod Decorator:
+===============================
+
+* The @staticmethod decorator is similar to @classmethod in that it can be called from an uninstantiated class object, although in this case there is no cls parameter passed to its method.
+
+Eg:
+
+class Student(object):
+
+    @staticmethod
+    def is_full_name(name_str):
+        names = name_str.split(' ')
+        return len(names) > 1
+
+Student.is_full_name('Scott Robinson')   # True
+Student.is_full_name('Scott')            # False
+
+print (Student.is_full_name('Scott Robinson'))    
+print (Student.is_full_name('Scott'))  
+
+
+
+Eg:
+
+class DateTime(object):
+
+    def __init__(self, day=10, month=10, year=2000):
+        self.day = day
+        self.month = month
+        self.year = year
+
+    @classmethod
+    def from_string(cls, string_date):
+        day, month, year = map(int, string_date.split('-'))
+        myDate = cls(day, month, year)
+        return myDate
+
+    @staticmethod
+    def is_valid_date(date_as_string):
+        day, month, year = map(int, date_as_string.split('-'))
+        return day <= 31 and month <= 12 and year <= 3999
+
+dateObj = DateTime.from_string('20-05-1994')
+is_valid_date = DateTime.is_valid_date('20-05-1994')
+print(is_valid_date)
+
+
+Eg:
+
+class ClassTest:
+    def instance_method(self):
+        print(f"Called instance_method of {self}")
+
+test = ClassTest()
+test.instance_method()
+ClassTest.instance_method(test)
+
+Eg:
+
+class ClassTest:
+    def instance_method(self):
+        print(f"Called instance_method of {self}")
+    @classmethod
+    def class_method(cls):
+        print(f"Called class_method of {cls}")
+
+ClassTest.class_method()
+
+Eg:
+
+class ClassTest:
+    def instance_method(self):
+        print(f"Called instance_method of {self}")
+    @classmethod
+    def class_method(cls):
+        print(f"Called class_method of {cls}")
+    @staticmethod
+    def static_method():
+        print(f"Called static_method. We don't get any object or class info here.")
+
+instance = ClassTest()
+instance.instance_method()
+ClassTest.class_method()
+ClassTest.static_method()

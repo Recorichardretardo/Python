@@ -1,0 +1,92 @@
+
+* Type Hints in Python:
+========================
+
+* Python is a dynamically typed language, 
+* Never have to explicitly indicate what kind of types variable has.
+* But in some cases, dynamic typing can lead to some bugs that are very difficult to debug and in those cases, Type Hints or Static Typing can be convenient.
+* Type Hints has been introduced as a new feature in Python 3.5.
+
+
+*  factorial function to understand this clearly:
+==================================================
+
+# factorial function 
+def factorial(i): 
+  if i<0: 
+    return None
+  if i == 0: 
+    return 1
+  return i * factorial(i-1) 
+  
+# passing an integer to the function 
+print(factorial(4)) 
+  
+# passing a string to the function 
+print(factorial("4")) 
+  
+# passing a floating point number to the function 
+print(factorial(5.01)) 
+
+
+* If try to pass an integer to the function it works correctly.
+* Now, if try to pass a string to the factorial function, we will get an error, as we can’t do a mathematical comparison with string.
+* Also, if try to pass a floating point number, let’s say 5.01 will also get an error here, as it is decrementing the number by 1 according to our logic in each iteration and it becomes -0.99 in the last iteration which returns “None”, which leads to an error as we are trying to multiply “None” with other floating point numbers.
+
+* The Type-Hints code looks as follows:
+========================================
+
+# factorial function 
+def factorial(i: int) -> int: 
+  if i<0: 
+    return None
+  if i == 0: 
+    return 1
+  return i * factorial(i-1) 
+  
+# passing a fraction to the function 
+print(factorial(5.01)) 
+
+
+* The Type-Hint is completely ignored by the Python interpreter.
+* So, if run this code again, it still get the same error.
+
+* So, have to use a static type checker that analyzes code and tries to detect if violating the Type-Hints or not.
+* The best known type checker is “mypy“. install it by simply using pip .
+
+pip install mypy
+
+
+
+Eg:
+
+def list_avg(sequence: list) -> float:
+    return sum(sequence) / len(sequence)
+
+
+ * Type hinting classes:
+ ========================
+
+Eg:
+
+ class Book:
+    def __init__(self, name: str, page_count: int):
+        self.name = name
+        self.page_count = page_count
+
+* Type hinting Lists and collections:
+======================================
+
+Eg:
+
+from typing import List  # , Tuple, Set, etc...
+
+class Book:
+    pass
+
+class BookShelf:
+    def __init__(self, books: List[Book]):
+        self.books = books
+
+    def __str__(self) -> str:
+        return f"BookShelf with {len(self.books)} books."

@@ -1,0 +1,70 @@
+* Python __str__():
+====================
+
+* This method returns the string representation of the object.
+* This method is called when print() or str() function is invoked on an object.
+* This method must return the String object.
+* If  __str__() function not implemented for a class, then built-in object implementation is used that actually calls __repr__() function.
+
+Eg:
+
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def __str__(self):
+        return f"Person {self.name}, {self.age} years old"
+
+
+bob = Person("Bob", 35)
+print(bob) 
+
+
+* Python __repr__():
+=====================
+
+* Python __repr__() function returns the object representation.
+* It could be any valid python expression such as tuple, dictionary, string etc.
+* This method is called when repr() function is invoked on the object, in that case, __repr__() function must return a String otherwise error will be thrown.
+* __repr__ is to be unambiguous, it outputs should allows to re-create an identical object.
+
+Eg:
+
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def __repr__(self):
+        # I'm adding the < > just so it's clear that this is an object we're printing out!
+        return (
+            f"<Person({self.name!r}, {self.age})>"
+        )  # !r calls the __repr__ method of the thing.
+
+
+bob = Person("Bob", 35)
+print(bob) # could re-create "Bob" very easily.
+
+
+
+Eg:
+
+
+class Vector3(object):
+    def __init__(self, args):
+        self.x = args[0]
+        self.y = args[1]
+        self.z = args[2]
+
+    def __str__(self):
+        return "x: {0}, y: {1}, z: {2}".format(self.x, self.y, self.z)
+
+    def __repr__(self):
+        return "Vector3([{0},{1},{2}])".format(self.x, self.y, self.z)
+
+v = Vector3([1,2,3])
+print (str(v))     #x: 1, y: 2, z: 3
+print (repr(v))    #Vector3([1,2,3])     
+
+* In this example, repr returns again a string that can be directly consumed/executed, whereas str is more useful as a debug output.

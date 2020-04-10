@@ -1,0 +1,62 @@
+* Difference between Method and Function in Python:
+===================================================
+
+* Python Method:
+================
+
+* Method is called by its name, but it is associated to an object (dependent).
+* A method is implicitly passed the object on which it is invoked.
+* It may or may not return any data.
+* A method can operate on the data (instance variables) that is contained by the corresponding class
+
+* Basic Method Structure in Python :
+
+class class_name 
+    def method_name () : 
+        ...... 
+        # method body 
+        ......    
+
+
+
+* Python Functions:
+===================
+
+* Function is block of code that is also called by its name. (independent)
+* The function can have different parameters or may not have any at all. If any data (parameters) are passed, they are passed explicitly.
+* It may or may not return any data.
+* Function does not deal with Class and its instance concept.
+
+* Basic Function Structure in Python :
+
+def function_name ( arg1, arg2, ...) : 
+    ...... 
+    # function body 
+    ......   
+
+
+ * Functions vs. Methods:
+ =========================
+
+ * A function that lives inside a class is called a method.
+
+* So, methods are functions, but not all functions are methods.  
+
+* Function:
+===========
+
+def average(sequence):
+    return sum(sequence) / len(sequence)
+
+* Method:
+=========
+
+
+class Student:
+    def __init__(self):  # method
+        self.name = "Rolf"
+        self.grades = (79, 90, 95, 99)
+    
+    def average(self):  # method
+        return sum(self.grades) / len(self.grades)    
+

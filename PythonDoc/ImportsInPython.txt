@@ -1,0 +1,92 @@
+* Absolute and Relative Imports in Python:
+===========================================
+
+* Python modules can get access to code from another module by importing the file/function using import.
+* The import statement is the most common way of invoking the import machinery, but it is not the only way. 
+* Import statement consists of the import keyword along with the name of the module.
+
+* The import statement involves two operations, it searches for a module and it binds the result of the search to name in local scope.
+* When a module is imported, Python runs all of the code in the module file and made available to the importer file.
+
+Eg:
+
+import math 
+print(math.pi) 
+
+
+* Absolute imports :
+=====================
+
+* Absolute import involves full path.
+* i.e., from the project’s root folder to the desired module. 
+* An absolute import state that the resource to be imported using its full path from the project’s root folder.
+
+
+* Pros and Cons of Absolute imports :
+======================================
+
+* Pros:
+
+* Absolute imports are very useful because they are clear and straight to the point.
+* Absolute import is easy to tell exactly from where the imported resource is, just by looking at the statement.
+* Absolute import remain valid even if the current location of the import statement changes.
+
+* Cons:
+
+* If the directory structure is very big then usage of absolute imports is not meaningful. In such case using relative imports works well.
+
+* Relative imports :
+=====================
+
+* Relative import specifies object or module imported from its current location, that is the location where import statement resides.
+* There two types of relative imports :
+
+* Implicit relative imports :
+
+Implicit relative import have been disapproved in Python(3.x).
+
+* Explicit relative imports :
+
+Explicit relative import have been approved in Python(3.x).
+
+
+Eg:
+
+# relative imports 
+  
+# importing fun1 into pkg1/module1.py 
+from .module1 import fun1 
+  
+# importing fun2 and fun3 into pkg2/module3.py  
+from .module3 import fun2 
+from .subpackage1.module5 import fun3 
+
+* Pros and Cons of Relative imports :
+
+* Pros:
+
+* Working with relative imports is concise and clear.
+* Based on current location it reduces the complexity of an import statement .
+
+* Cons:
+
+* Relative imports is not so readable as absolute ones.
+* Using relative imports it is not easy because it is very hard to tell the location of a module.
+
+
+Eg:
+
+mymodule.py
+
+def divide(dividend, divisor):
+    return dividend / divisor
+
+
+print("mymodule.py:", __name__)
+
+code.py
+
+from mymodule import divide
+
+print(divide(10, 2))
+

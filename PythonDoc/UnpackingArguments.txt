@@ -1,0 +1,166 @@
+* Unpacking:
+============
+
+> use * to unpack the list so that all elements of it can be passed as different parameters.
+
+Eg:
+
+* simply pass list to the function, the call doesn’t work.
+
+# A sample function that takes 4 arguments and prints them. 
+def fun(a, b, c, d): 
+    print(a, b, c, d) 
+  
+# Driver Code 
+my_list = [1, 2, 3, 4] 
+  
+# This doesn't work 
+fun(my_list)
+
+Output : TypeError: fun() takes exactly 4 arguments (1 given)
+
+Unpacking:
+
+> use * to unpack the list so that all elements of it can be passed as different parameters.
+
+def fun(a, b, c, d): 
+    print(a, b, c, d) 
+  
+# Driver Code 
+my_list = [1, 2, 3, 4] 
+  
+# Unpacking list into four arguments 
+fun(*my_list)
+
+output: (1, 2, 3, 4)
+
+
+* Packing:
+===========
+
+* Don’t know how many arguments need to be passed to a python function, Use Packing to pack all arguments in a tuple.
+
+Eg:
+
+# This function uses packing to sum , unknown number of arguments 
+def mySum(*args): 
+    sum = 0
+    for i in range(0, len(args)): 
+        sum = sum + args[i] 
+    return sum 
+  
+print(mySum(1, 2, 3, 4, 5)) 
+print(mySum(10, 20)) 
+
+output:
+
+15
+30
+
+Eg:
+
+def multiply(*args):
+    print(args)
+    total = 1
+    for arg in args:
+        total = total * arg
+
+    return total
+
+
+print(multiply(3, 5))
+print(multiply(-1))
+
+* The asterisk takes all the arguments and packs them into a tuple.
+* The asterisk can be used to unpack sequences into arguments too!
+
+def add(x, y):
+    return x + y
+
+
+nums = [3, 5]
+print(add(*nums))  # instead of add(nums[0], nums[1])
+
+*  Forced named parameter:
+
+def multiply(*args):
+    total = 1
+    for arg in args:
+        total = total * arg
+
+    return total
+
+
+def apply(*args, operator):
+    if operator == "*":
+        return multiply(args)
+    elif operator == "+":
+        return sum(args)
+    else:
+        return "No valid operator provided to apply()."
+
+
+print(apply(1, 3, 6, 7, operator="+"))
+print(apply(1, 3, 5, "+"))  # Error
+
+
+
+* dictionary uses ** for packing and unpacking:
+================================================
+
+* Double asterisk packs or unpacks keyword arguments
+
+Eg:
+
+def add(x, y):
+    return x + y
+
+
+nums = {"x": 15, "y": 25}
+
+print(add(**nums))
+
+Eg:
+
+def fun(a, b, c): 
+    print(a, b, c) 
+  
+# A call with unpacking of dictionary 
+d = {'a':2, 'b':4, 'c':10} 
+fun(**d) 
+
+* packing kwargs:
+===================
+
+Eg:
+
+def named(**kwargs):
+    print(kwargs)
+
+
+named(name="Bob", age=25)
+
+# named({"name": "Bob", "age": 25})  # Error, the dictionary is actually a positional argument.
+
+# Unpack dict into arguments.
+named(**{"name": "Bob", "age": 25})
+
+* Both args and kwargs:
+========================
+
+def both(*args, **kwargs):
+    print(args)
+    print(kwargs)
+
+
+both(1, 3, 5, name="Bob", age=25)
+
+* Error when unpacking:
+========================
+
+def myfunction(**kwargs):
+    print(kwargs)
+
+
+myfunction(**"Bob")  # Error, must be mapping
+myfunction(**None)  # Error

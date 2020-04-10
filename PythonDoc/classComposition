@@ -1,0 +1,65 @@
+* Python Composition:
+======================
+
+* In composition,Not inherit from the base class but establish relationships between classes through the use of instance variables that are references to other objects.
+
+* In composition one of the classes is composed of one or more instance of other classes.
+
+pseudocode:
+===========
+
+class GenericClass:
+    define some attributes and methods
+
+class ASpecificClass:
+    Instance_variable_of_generic_class = GenericClass
+
+# use this instance somewhere in the class
+    some_method(Instance_variable_of_generic_class)
+
+
+Eg:
+
+
+class BookShelf:
+    def __init__(self, *books):
+        self.books = books
+
+    def __str__(self):
+        return f"BookShelf with {len(self.books)} books."
+
+
+class Book:
+    def __init__(self, name):
+        self.name = name
+
+
+book = Book("Harry Potter")
+book2 = Book("Python 101")
+shelf = BookShelf(book, book2)
+print(shelf)
+
+
+Eg:
+
+
+class Salary:
+    def __init__(self, pay):
+        self.pay = pay
+ 
+    def get_total(self):
+        return (self.pay*12)
+ 
+ 
+class Employee:
+    def __init__(self, pay, bonus):
+        self.pay = pay
+        self.bonus = bonus
+        self.obj_salary = Salary(self.pay)
+ 
+    def annual_salary(self):
+        return "Total: " + str(self.obj_salary.get_total() + self.bonus)
+ 
+ 
+obj_emp = Employee(600, 500)
+print(obj_emp.annual_salary())
